@@ -1,0 +1,14 @@
+
+==== Exam Scheduling Synthetic Dataset ====
+Students:          3000
+Courses:           22
+Classrooms:        30
+Valid Timeslots:   83
+Enrollments:       13527
+Conflicts:         231
+
+Average Courses/Student: 4.51
+Max Room Capacity:       46
+Min Room Capacity:       21
+-------------------------------------------
+Output Directory: /Users/hxu10/Desktop/Homeworks/advanceAlgo/project/ExamTime 2/data/full_dataset

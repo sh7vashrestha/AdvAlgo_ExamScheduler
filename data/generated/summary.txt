@@ -1,0 +1,10 @@
+
+ExamTime-Compatible Dataset Generated 🎓
+----------------------------------------
+Students:   3000
+Courses:    22
+Rooms:      30
+Periods:    95
+Exams:      22
+Enrollments:3000
+Output Path:/Users/hxu10/Desktop/Homeworks/advanceAlgo/project/ExamTime 2/data/generated
