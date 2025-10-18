@@ -104,20 +104,42 @@ durations_df.to_csv(os.path.join(OUT_PATH, "durations.csv"), index=False)
 print(f"⌛ durations.csv saved ({len(durations_df)} exams)")
 
 # -----------------------------
-# STEP 5: Build enrollments.stu from schedule.csv
+# -----------------------------
+# STEP 5: Build enrollments.stu + mapping
 # -----------------------------
 enrollments = schedule.groupby("student_id")["course_id"].apply(list).reset_index()
 
 stu_lines = []
-for _, row in enrollments.iterrows():
-    courses_list = [str(c) for c in row["course_id"]]
-    stu_lines.append(" ".join(courses_list))
+map_rows = []
+line_num = 1
 
+for _, row in enrollments.iterrows():
+    student_id = row["student_id"]
+    student_info = students[students["student_id"] == student_id].iloc[0]
+    courses_list = [str(c) for c in row["course_id"]]
+    line = " ".join(courses_list)
+    stu_lines.append(line)
+
+    map_rows.append({
+        "line": line_num,
+        "student_id": student_id,
+        "first_name": student_info["first_name"],
+        "last_name": student_info["last_name"],
+        "email": student_info["email"],
+        "courses": line
+    })
+    line_num += 1
+
+# Save .stu
 stu_path = os.path.join(OUT_PATH, "enrollments.stu")
 with open(stu_path, "w") as f:
     f.write("\n".join(stu_lines))
 
-print(f"🧑‍🎓 enrollments.stu saved ({len(stu_lines)} students)")
+# Save mapping CSV
+map_df = pd.DataFrame(map_rows)
+map_df.to_csv(os.path.join(OUT_PATH, "enrollment_map.csv"), index=False)
+print(f"🧩 Created enrollments.stu ({len(stu_lines)} students) and mapping file (enrollment_map.csv)")
+
 
 # -----------------------------
 # STEP 6: Summary
