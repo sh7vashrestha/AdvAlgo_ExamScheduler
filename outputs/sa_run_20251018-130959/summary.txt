@@ -1,0 +1,7 @@
+Nodes: 22  Edges: 231
+Periods available: 95  Used: 21
+Clique lower bound: 22
+Valid (conflicts): False  Valid (durations): True  Valid (capacity): False
+
+Algorithm: sa
+Runtime: 25.953s

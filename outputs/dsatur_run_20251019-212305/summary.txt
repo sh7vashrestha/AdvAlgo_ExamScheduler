@@ -1,0 +1,7 @@
+Nodes: 200  Edges: 3023
+Periods available: 30  Used: 12
+Clique lower bound: 4
+Valid (conflicts): True  Valid (durations): True  Valid (capacity): True
+
+Algorithm: dsatur
+Runtime: 0.091s
